@@ -139,12 +139,13 @@ function Center(props) {
                       >
                         <Grid item xs={3} md={3} lg={3} sm={3}>
                           <Chip
-                            label={item.min_age_limit}
+                            label={`${item.min_age_limit} +`}
                             size="small"
-                            icon={<FaceIcon />}
+                            icon={<FaceIcon style={{ color: "#fff" }} />}
                             style={{
-                              backgroundColor: "var(--secondary-color)",
+                              backgroundColor: "var(--primary-color)",
                               fontWeight: "bold",
+                              color: "#fff",
                             }}
                           />
                         </Grid>
@@ -156,14 +157,7 @@ function Center(props) {
                           sm={5}
                           style={{ display: "flex", justifyContent: "center" }}
                         >
-                          <Chip
-                            label={item.vaccine}
-                            size="small"
-                            style={{
-                              backgroundColor: "var(--primary-color)",
-                              fontWeight: "bold",
-                            }}
-                          />
+                          <h3>{item.vaccine}</h3>
                         </Grid>
                         <Grid
                           item
@@ -173,82 +167,76 @@ function Center(props) {
                           sm={4}
                           style={{ display: "flex", justifyContent: "center" }}
                         >
-                          <Chip label={item.date} size="small" />
+                          <Chip
+                            label={item.date}
+                            style={{
+                              fontWeight: "bolder",
+                              backgroundColor: "var(--secondary-color)",
+                              color: "#fff",
+                            }}
+                            size="small"
+                          />
                         </Grid>
                       </Grid>
 
-                      <Grid item xs={4} md={4} lg={4} sm={4}>
-                        <Chip
-                          label="Available Capacity"
-                          style={{
-                            fontWeight: "bold",
-                          }}
-                        ></Chip>
+                      <Grid item xs={12} md={12} lg={12} sm={12}>
+                        <h3>Available </h3>
                       </Grid>
+
                       <Grid
                         item
-                        xs={8}
-                        md={8}
-                        lg={8}
-                        sm={8}
-                        style={{ display: "flex", justifyContent: "center" }}
+                        xs={12}
+                        md={12}
+                        lg={12}
+                        sm={12}
+                        style={{
+                          textAlign: "center",
+                          display: "flex",
+                          justifyContent: "space-around",
+                          padding: "0",
+                        }}
                       >
-                        <p>{item.available_capacity}</p>
-                      </Grid>
-                      <Grid item xs={4} md={4} lg={4} sm={4}>
                         <Chip
-                          label="Available Capacity Dose 1"
+                          label={`Total - ${item.available_capacity}`}
                           style={{
-                            backgroundColor: "var(--primary-color)",
+                            backgroundColor:
+                              item.available_capacity > 0
+                                ? "var(--primary-color)"
+                                : "var(--error-color)",
+                            color: "#fff",
                             fontWeight: "bold",
                           }}
-                        ></Chip>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={8}
-                        md={8}
-                        lg={8}
-                        sm={8}
-                        style={{ display: "flex", justifyContent: "center" }}
-                      >
-                        <p>{item.available_capacity_dose1}</p>
-                      </Grid>
-                      <Grid item xs={4} md={4} lg={4} sm={4}>
+                        />
+
                         <Chip
-                          label="Available Capacity Dose 2"
+                          label={`Dose one - ${item.available_capacity_dose1}`}
                           style={{
-                            backgroundColor: "var(--secondary-color)",
+                            backgroundColor:
+                              item.available_capacity_dose1 > 0
+                                ? "var(--primary-color)"
+                                : "var(--error-color)",
+                            color: "#fff",
                             fontWeight: "bold",
                           }}
-                        ></Chip>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={8}
-                        md={8}
-                        lg={8}
-                        sm={8}
-                        style={{ display: "flex", justifyContent: "center" }}
-                      >
-                        <p>{item.available_capacity_dose2}</p>
-                      </Grid>
-                      <Grid item xs={4} md={4} lg={4} sm={4}>
+                        />
+
                         <Chip
-                          label="Slots"
+                          label={`Dose two - ${item.available_capacity_dose2}`}
                           style={{
+                            backgroundColor:
+                              item.available_capacity_dose2 > 0
+                                ? "var(--primary-color)"
+                                : "var(--error-color)",
+                            color: "#fff",
                             fontWeight: "bold",
                           }}
-                        ></Chip>
+                        />
                       </Grid>
-                      <Grid
-                        item
-                        xs={8}
-                        md={8}
-                        lg={8}
-                        sm={8}
-                        style={{ display: "flex", justifyContent: "center" }}
-                      >
+
+                      <Grid item xs={4} md={4} lg={4} sm={4}>
+                        <h3>Slots</h3>
+                      </Grid>
+                      <Grid item xs={8} md={8} lg={8} sm={8}>
                         {item.slots.map((item, i) => (
                           <p key={item + i}>{item}</p>
                         ))}
