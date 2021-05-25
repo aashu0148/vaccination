@@ -5,6 +5,7 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Divider, Grid } from "@material-ui/core";
+import FaceIcon from "@material-ui/icons/Face";
 
 import "./Center.css";
 
@@ -128,50 +129,126 @@ function Center(props) {
                           }}
                         />
                       </Grid>
+                      <Grid
+                        item
+                        xs={12}
+                        md={12}
+                        lg={12}
+                        sm={12}
+                        style={{ display: "flex" }}
+                      >
+                        <Grid item xs={3} md={3} lg={3} sm={3}>
+                          <Chip
+                            label={item.min_age_limit}
+                            size="small"
+                            icon={<FaceIcon />}
+                            style={{
+                              backgroundColor: "var(--secondary-color)",
+                              fontWeight: "bold",
+                            }}
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={5}
+                          md={5}
+                          lg={5}
+                          sm={5}
+                          style={{ display: "flex", justifyContent: "center" }}
+                        >
+                          <Chip
+                            label={item.vaccine}
+                            size="small"
+                            style={{
+                              backgroundColor: "var(--primary-color)",
+                              fontWeight: "bold",
+                            }}
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={4}
+                          md={4}
+                          lg={4}
+                          sm={4}
+                          style={{ display: "flex", justifyContent: "center" }}
+                        >
+                          <Chip label={item.date} size="small" />
+                        </Grid>
+                      </Grid>
 
-                      <Grid item xs={12} md={12} lg={12} sm={12}>
-                        <Chip label={item.date} size="small" />
-                      </Grid>
                       <Grid item xs={4} md={4} lg={4} sm={4}>
-                        <h3>Date </h3>
+                        <Chip
+                          label="Available Capacity"
+                          style={{
+                            fontWeight: "bold",
+                          }}
+                        ></Chip>
                       </Grid>
-                      <Grid item xs={8} md={8} lg={8} sm={8}>
-                        <p>{item.date}</p>
-                      </Grid>
-                      <Grid item xs={4} md={4} lg={4} sm={4}>
-                        <h3>Available Capacity </h3>
-                      </Grid>
-                      <Grid item xs={8} md={8} lg={8} sm={8}>
+                      <Grid
+                        item
+                        xs={8}
+                        md={8}
+                        lg={8}
+                        sm={8}
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
                         <p>{item.available_capacity}</p>
                       </Grid>
                       <Grid item xs={4} md={4} lg={4} sm={4}>
-                        <h3>Age Limit </h3>
+                        <Chip
+                          label="Available Capacity Dose 1"
+                          style={{
+                            backgroundColor: "var(--primary-color)",
+                            fontWeight: "bold",
+                          }}
+                        ></Chip>
                       </Grid>
-                      <Grid item xs={8} md={8} lg={8} sm={8}>
-                        <p>{item.min_age_limit}</p>
-                      </Grid>
-                      <Grid item xs={4} md={4} lg={4} sm={4}>
-                        <h3>Vaccine</h3>
-                      </Grid>
-                      <Grid item xs={8} md={8} lg={8} sm={8}>
-                        <p>{item.vaccine}</p>
-                      </Grid>
-                      <Grid item xs={4} md={4} lg={4} sm={4}>
-                        <h3>Available Capacity Dose 1</h3>
-                      </Grid>
-                      <Grid item xs={8} md={8} lg={8} sm={8}>
+                      <Grid
+                        item
+                        xs={8}
+                        md={8}
+                        lg={8}
+                        sm={8}
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
                         <p>{item.available_capacity_dose1}</p>
                       </Grid>
                       <Grid item xs={4} md={4} lg={4} sm={4}>
-                        <h3>Available Capacity Dose 2</h3>
+                        <Chip
+                          label="Available Capacity Dose 2"
+                          style={{
+                            backgroundColor: "var(--secondary-color)",
+                            fontWeight: "bold",
+                          }}
+                        ></Chip>
                       </Grid>
-                      <Grid item xs={8} md={8} lg={8} sm={8}>
+                      <Grid
+                        item
+                        xs={8}
+                        md={8}
+                        lg={8}
+                        sm={8}
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
                         <p>{item.available_capacity_dose2}</p>
                       </Grid>
                       <Grid item xs={4} md={4} lg={4} sm={4}>
-                        <h3>Slots </h3>
+                        <Chip
+                          label="Slots"
+                          style={{
+                            fontWeight: "bold",
+                          }}
+                        ></Chip>
                       </Grid>
-                      <Grid item xs={8} md={8} lg={8} sm={8}>
+                      <Grid
+                        item
+                        xs={8}
+                        md={8}
+                        lg={8}
+                        sm={8}
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
                         {item.slots.map((item, i) => (
                           <p key={item + i}>{item}</p>
                         ))}
