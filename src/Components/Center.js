@@ -38,7 +38,7 @@ function Center() {
     setValue(newValue);
   };
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -46,6 +46,7 @@ function Center() {
           style={{ width: "100%" }}
           textColor="#000"
           centered
+          variant="fullWidth"
           aria-label="full width tabs example"
         >
           <Tab label="Item One" {...a11yProps(0)} />

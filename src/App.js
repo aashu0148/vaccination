@@ -4,8 +4,8 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 import injection from "./assets/svg-1.svg";
-import Center from "./Components/Center";
 import "./Components/Field.css";
+import Center from "./Components/Center";
 import "./App.css";
 
 function App() {
