@@ -20,14 +20,18 @@ small,
 span {
   user-select: text;
 }
+
 :root {
   --font-small: 12px;
   --font-medium: 16px;
   --font-large: 24px;
   --font-larger: 36px;
   --font-gaint: 48px;
-  --primary-color: #e91649;
-  --secondary-color: #16e9b6;
+  /* --primary-color: #c105fa;
+  --secondary-color: #16e9b6; */
+  --primary-color: #7cd629;
+  --secondary-color: #ff7b00;
+  --error-color: #e91616;
 }
 
 h1,
@@ -36,9 +40,14 @@ h3,
 h4,
 h5,
 h6 {
-  /* font-family: "Rubik", sans-serif; */
   font-weight: 700;
   line-height: 1.4;
+}
+h3 {
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  margin: auto;
 }
 p {
   font-size: var(--font-medium);

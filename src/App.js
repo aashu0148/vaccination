@@ -4,8 +4,9 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 import injection from "./assets/svg-1.svg";
-import "./Components/Field.css";
 import Center from "./Components/Center";
+import Spinner from "./Components/Spinner/Spinner";
+import "./Components/Field.css";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,40 @@ function App() {
   const [pinValue, setPinValue] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [searchButtonDisabled, setSearchButtonDisabled] = useState(false);
+
+  const [centers, setCenters] = useState();
+  const [showSpinner, setShowSpinner] = useState(false);
+
+  const searchHandler = () => {
+    const date = `${dateValue.getDate()}-${
+      dateValue.getMonth() + 1
+    }-${dateValue.getFullYear()}`;
+
+    if (pinValue.length < 6) {
+      setErrorMsg("Invalid PIN");
+      return;
+    }
+    setErrorMsg("");
+    setShowSpinner(true);
+    setCenters("");
+
+    setSearchButtonDisabled(true);
+
+    fetch(
+      `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pinValue}&date=${date}`
+    )
+      .then(async (res) => {
+        setShowSpinner(false);
+        setSearchButtonDisabled(false);
+        const data = await res.json();
+        setCenters(data.centers);
+      })
+      .catch((err) => {
+        setShowSpinner(false);
+        setSearchButtonDisabled(false);
+        setErrorMsg("Error Connecting Server. Please refresh");
+      });
+  };
 
   return (
     <div className="App">
@@ -25,10 +60,13 @@ function App() {
           width: "fit-content",
           borderBottom: "3px solid var(--secondary-color)",
           marginBottom: "30px",
+          alignItems: "center",
         }}
       >
         <img style={{ height: "50px" }} src={injection} alt="Vaccine" />
-        <h1 style={{ color: "var(--primary-color)" }}>Vaccination center</h1>
+        <h1 style={{ color: "var(--primary-color)", textAlign: "center" }}>
+          Vaccination center
+        </h1>
       </div>
       <div
         onClick={() => {
@@ -88,7 +126,7 @@ function App() {
           <div className="field-form-elem">
             <label>Enter PIN code</label>
             <input
-              type="text"
+              type="tel"
               placeholder="Enter PIN"
               value={pinValue}
               maxLength="6"
@@ -99,6 +137,7 @@ function App() {
                   setPinValue(value);
                 }
               }}
+              onKeyUp={(e) => (e.keyCode === 13 ? searchHandler() : "")}
             />
           </div>
         </Grid>
@@ -115,28 +154,40 @@ function App() {
               fontWeight: "bold",
               padding: "10px 20px",
             }}
+            onClick={searchHandler}
           >
             Search
           </Button>
         </Grid>
       </Grid>
-
       <Divider />
+
+      <br />
+
       <Grid
         container
-        spacing={2}
+        spacing={1}
         style={{
           width: "100%",
           maxWidth: "700px",
           margin: "auto",
+          padding: "5px",
         }}
         justify="center"
       >
-        <Center />
-        <Grid item xs={12} md={12} lg={12}>
-          <Divider />
-        </Grid>
-        <Center />
+        {centers ? (
+          centers.length === 0 ? (
+            <h2>No Centers found at this PIN code and Date.</h2>
+          ) : (
+            centers.map((item, i) => (
+              <Center key={i} data={item} sessions={item.sessions} />
+            ))
+          )
+        ) : showSpinner ? (
+          <Spinner />
+        ) : (
+          ""
+        )}
       </Grid>
     </div>
   );
