@@ -21,10 +21,9 @@ function Center(props) {
           id="panel1bh-header"
           style={{ padding: "0 5px" }}
         >
-          <div>
+          <div style={{ minWidth: "45%" }}>
             <p
               style={{
-                minWidth: "45%",
                 fontWeight: "bolder",
                 fontSize: "1rem",
                 color: "#000",
