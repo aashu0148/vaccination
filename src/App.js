@@ -4,9 +4,9 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 import injection from "./assets/svg-1.svg";
+import Center from "./Components/Center";
 import "./Components/Field.css";
 import "./App.css";
-import Center from "./Components/Center";
 
 function App() {
   const [dateValue, setDateValue] = useState(new Date());
@@ -126,7 +126,6 @@ function App() {
         container
         spacing={2}
         style={{
-          margin: "0",
           width: "100%",
           maxWidth: "700px",
           margin: "auto",
