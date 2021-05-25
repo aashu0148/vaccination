@@ -60,10 +60,13 @@ function App() {
           width: "fit-content",
           borderBottom: "3px solid var(--secondary-color)",
           marginBottom: "30px",
+          alignItems: "center",
         }}
       >
         <img style={{ height: "50px" }} src={injection} alt="Vaccine" />
-        <h1 style={{ color: "var(--primary-color)" }}>Vaccination center</h1>
+        <h1 style={{ color: "var(--primary-color)", textAlign: "center" }}>
+          Vaccination center
+        </h1>
       </div>
       <div
         onClick={() => {
@@ -123,7 +126,7 @@ function App() {
           <div className="field-form-elem">
             <label>Enter PIN code</label>
             <input
-              type="text"
+              type="tel"
               placeholder="Enter PIN"
               value={pinValue}
               maxLength="6"
@@ -163,11 +166,12 @@ function App() {
 
       <Grid
         container
-        spacing={2}
+        spacing={1}
         style={{
           width: "100%",
           maxWidth: "700px",
           margin: "auto",
+          padding: "5px",
         }}
         justify="center"
       >

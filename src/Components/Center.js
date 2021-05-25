@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Chip from "@material-ui/core/Chip";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -10,7 +11,7 @@ import "./Center.css";
 function Center(props) {
   const [expanded, setExpanded] = useState(false);
   const [sessionExpanded, setSessionExpanded] = useState(false);
-  console.log(props.data);
+
   return (
     <div style={{ width: "100%", margin: "10px 0" }}>
       <Accordion expanded={expanded} onChange={() => setExpanded(!expanded)}>
@@ -18,21 +19,35 @@ function Center(props) {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
-          style={{}}
+          style={{ padding: "0 5px" }}
         >
-          <p
-            style={{
-              minWidth: "45%",
-              fontWeight: "bolder",
-              fontSize: "1rem",
-              color: "#000",
-            }}
-          >
-            {props.data.name || "_"}
-          </p>
+          <div>
+            <p
+              style={{
+                minWidth: "45%",
+                fontWeight: "bolder",
+                fontSize: "1rem",
+                color: "#000",
+              }}
+            >
+              {props.data.name || "_"}
+            </p>
+            <Chip
+              size="small"
+              label={`Available : ${props.sessions[0].available_capacity}`}
+              style={{
+                color: "#fff",
+                backgroundColor:
+                  props.sessions[0].available_capacity > 0
+                    ? "var(--secondary-color)"
+                    : "var(--error-color)",
+                fontWeight: "600",
+              }}
+            />
+          </div>
           <p style={{ fontWeight: "400" }}>{props.data.address}</p>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails style={{ padding: "0 7px 14px 7px" }}>
           <Grid container spacing={1} alignItems="center">
             <Grid item xs={12} sm={12} md={12} lg={12}>
               <Divider style={{ backgroundColor: "var(--primary-color)" }} />
@@ -115,6 +130,9 @@ function Center(props) {
                         />
                       </Grid>
 
+                      <Grid item xs={12} md={12} lg={12} sm={12}>
+                        <Chip label={item.date} size="small" />
+                      </Grid>
                       <Grid item xs={4} md={4} lg={4} sm={4}>
                         <h3>Date </h3>
                       </Grid>

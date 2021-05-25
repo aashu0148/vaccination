@@ -27,8 +27,11 @@ span {
   --font-large: 24px;
   --font-larger: 36px;
   --font-gaint: 48px;
-  --primary-color: #e91649;
-  --secondary-color: #16e9b6;
+  /* --primary-color: #c105fa;
+  --secondary-color: #16e9b6; */
+  --primary-color: #7cd629;
+  --secondary-color: #ff7b00;
+  --error-color: #e91616;
 }
 
 h1,
