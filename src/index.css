@@ -20,6 +20,7 @@ small,
 span {
   user-select: text;
 }
+
 :root {
   --font-small: 12px;
   --font-medium: 16px;
@@ -36,9 +37,14 @@ h3,
 h4,
 h5,
 h6 {
-  /* font-family: "Rubik", sans-serif; */
   font-weight: 700;
   line-height: 1.4;
+}
+h3 {
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  margin: auto;
 }
 p {
   font-size: var(--font-medium);
