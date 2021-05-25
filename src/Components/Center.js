@@ -39,7 +39,7 @@ function Center(props) {
                 color: "#fff",
                 backgroundColor:
                   props.sessions[0].available_capacity > 0
-                    ? "var(--secondary-color)"
+                    ? "var(--primary-color)"
                     : "var(--error-color)",
                 fontWeight: "600",
               }}
