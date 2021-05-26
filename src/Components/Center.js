@@ -50,7 +50,14 @@ function Center(props) {
         <AccordionDetails style={{ padding: "0 7px 14px 7px" }}>
           <Grid container spacing={1} alignItems="center">
             <Grid item xs={12} sm={12} md={12} lg={12}>
-              <Divider style={{ backgroundColor: "var(--primary-color)" }} />
+              <Divider
+                style={{
+                  backgroundColor:
+                    props.sessions[0].available_capacity > 0
+                      ? "var(--primary-color)"
+                      : "var(--secondary-color)",
+                }}
+              />
             </Grid>
 
             <Grid item xs={4} md={4} lg={4} sm={4}>
@@ -124,7 +131,7 @@ function Center(props) {
                       <Grid item xs={12} sm={12} md={12} lg={12}>
                         <Divider
                           style={{
-                            backgroundColor: "var(--secondary-color)",
+                            backgroundColor: "var(--primary-color)",
                             margin: "5px 0",
                           }}
                         />
@@ -140,7 +147,7 @@ function Center(props) {
                         <Grid item xs={3} md={3} lg={3} sm={3}>
                           <Chip
                             label={`${item.min_age_limit} +`}
-                            size="small"
+                            // size="small"
                             icon={<FaceIcon style={{ color: "#fff" }} />}
                             style={{
                               backgroundColor: "var(--primary-color)",
@@ -157,7 +164,7 @@ function Center(props) {
                           sm={5}
                           style={{ display: "flex", justifyContent: "center" }}
                         >
-                          <h3>{item.vaccine}</h3>
+                          <h3>{item.date}</h3>
                         </Grid>
                         <Grid
                           item
@@ -168,19 +175,19 @@ function Center(props) {
                           style={{ display: "flex", justifyContent: "center" }}
                         >
                           <Chip
-                            label={item.date}
+                            label={item.vaccine}
                             style={{
                               fontWeight: "bolder",
-                              backgroundColor: "var(--secondary-color)",
+                              backgroundColor: "var(--primary-color)",
                               color: "#fff",
                             }}
-                            size="small"
+                            // size="small"
                           />
                         </Grid>
                       </Grid>
 
                       <Grid item xs={12} md={12} lg={12} sm={12}>
-                        <h3>Available </h3>
+                        <br /> <h3>Available </h3>
                       </Grid>
 
                       <Grid
@@ -206,6 +213,7 @@ function Center(props) {
                             color: "#fff",
                             fontWeight: "bold",
                           }}
+                          size="small"
                         />
 
                         <Chip
@@ -218,6 +226,7 @@ function Center(props) {
                             color: "#fff",
                             fontWeight: "bold",
                           }}
+                          size="small"
                         />
 
                         <Chip
@@ -230,15 +239,37 @@ function Center(props) {
                             color: "#fff",
                             fontWeight: "bold",
                           }}
+                          size="small"
                         />
                       </Grid>
 
-                      <Grid item xs={4} md={4} lg={4} sm={4}>
-                        <h3>Slots</h3>
+                      <Grid item xs={12} md={12} lg={12} sm={12}>
+                        <br /> <h3>Slots</h3>
                       </Grid>
-                      <Grid item xs={8} md={8} lg={8} sm={8}>
+                      <Grid
+                        item
+                        xs={12}
+                        md={12}
+                        lg={12}
+                        sm={12}
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          justifyContent: "space-around",
+                        }}
+                      >
                         {item.slots.map((item, i) => (
-                          <p key={item + i}>{item}</p>
+                          <Chip
+                            key={item + i}
+                            label={item}
+                            style={{
+                              backgroundColor: "var(--secondary-color)",
+                              color: "#fff",
+                              fontWeight: "400",
+                              margin: "3px 0",
+                            }}
+                            size="small"
+                          />
                         ))}
                       </Grid>
                     </Grid>
